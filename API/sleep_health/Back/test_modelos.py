@@ -58,3 +58,12 @@ def test_modelo_knn():
     assert recall_knn >= 0.5
     assert precisao_knn >= 0.5
     assert f1_knn >= 0.5
+
+if __name__ == '__main__':
+    import unittest
+
+    class TestSeuScript(unittest.TestCase):
+        def test_modelo_knn(self):
+            test_modelo_knn()
+
+    unittest.main()
