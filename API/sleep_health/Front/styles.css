@@ -1,0 +1,87 @@
+/* Estilos personalizados para o Sistema de Diagnóstico de Distúrbios do Sono */
+
+/* Estilo geral do corpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa; /* Cor de fundo suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo para o navbar */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Estilo para o jumbotron */
+.jumbotron {
+    background-color: #e9ecef;
+    padding: 2rem 1rem;
+}
+
+/* Estilo para os cards */
+.card {
+    margin-bottom: 20px;
+}
+
+/* Estilo para os labels dos formulários */
+.form-group label {
+    font-weight: 600;
+}
+
+/* Estilo para o botão de diagnosticar */
+#patientForm button {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+/* Estilo para a tabela de resultados */
+.table thead th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Estilo para ações na tabela */
+.table tbody td .btn {
+    margin-right: 5px;
+}
+
+/* Estilo para o alerta informativo */
+.alert {
+    margin-top: 20px;
+}
+
+/* Estilos adicionais para personalização */
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para mensagens de erro */
+.invalid-feedback {
+    display: none;
+}
+
+.is-invalid .invalid-feedback {
+    display: block;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 767.98px) {
+    .form-row {
+        display: block;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    #patientForm button {
+        margin-top: 10px;
+    }
+}

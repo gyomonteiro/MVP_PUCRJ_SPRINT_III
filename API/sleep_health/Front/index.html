@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Meta tag para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Inclusão do Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Seu arquivo CSS personalizado (opcional) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Sistema de Diagnóstico de Distúrbios do Sono</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Hospital Pimenta Monteiro</a>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <div class="container mt-4">
+        <!-- Cabeçalho -->
+        <div class="jumbotron">
+            <h1 class="display-4">Sistema de Diagnóstico de Distúrbios do Sono</h1>
+            <p class="lead">Este sistema auxilia no diagnóstico de distúrbios do sono.</p>
+            <hr class="my-4">
+            <p>Preencha os campos abaixo com os dados do paciente e clique em "Diagnosticar".</p>
+        </div>
+
+        <!-- Formulário de entrada de dados -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Dados do Paciente</h5>
+            </div>
+            <div class="card-body">
+                <form id="patientForm">
+                    <div class="form-row">
+                        <!-- Número de Identificação -->
+                        <div class="form-group col-md-4">
+                            <label for="newPersonID">Número de Identificação</label>
+                            <input type="text" class="form-control" id="newPersonID" placeholder="ID do Paciente">
+                        </div>
+                        <!-- Gênero -->
+                        <div class="form-group col-md-4">
+                            <label for="newGender">Gênero</label>
+                            <select id="newGender" class="form-control">
+                                <option selected disabled>Selecione...</option>
+                                <option value="1">Feminino</option>
+                                <option value="2">Masculino</option>
+                            </select>
+                        </div>
+                        <!-- Idade -->
+                        <div class="form-group col-md-4">
+                            <label for="newAge">Idade</label>
+                            <input type="number" class="form-control" id="newAge" placeholder="Idade">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Duração do Sono -->
+                        <div class="form-group col-md-4">
+                            <label for="newDuration">Duração do Sono (horas)</label>
+                            <input type="number" step="0.1" class="form-control" id="newDuration" placeholder="Ex: 7.5">
+                        </div>
+                        <!-- Qualidade do Sono -->
+                        <div class="form-group col-md-4">
+                            <label for="newQuality">Qualidade do Sono (1-10)</label>
+                            <input type="number" class="form-control" id="newQuality" placeholder="Ex: 8">
+                        </div>
+                        <!-- Atividade Física -->
+                        <div class="form-group col-md-4">
+                            <label for="newLevelActivity">Atividade Física (min/dia)</label>
+                            <input type="number" class="form-control" id="newLevelActivity" placeholder="Ex: 30">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Nível de Estresse -->
+                        <div class="form-group col-md-4">
+                            <label for="newLevelStress">Nível de Estresse (1-10)</label>
+                            <input type="number" class="form-control" id="newLevelStress" placeholder="Ex: 5">
+                        </div>
+                        <!-- Categoria de IMC -->
+                        <div class="form-group col-md-4">
+                            <label for="newBMI">Categoria de IMC</label>
+                            <select id="newBMI" class="form-control">
+                                <option selected disabled>Selecione...</option>
+                                <option value="1">Normal</option>
+                                <option value="2">Sobrepeso</option>
+                                <option value="3">Obesidade</option>
+                                <option value="4">Obesidade Mórbida</option>
+                            </select>
+                        </div>
+                        <!-- Pressão Arterial -->
+                        <div class="form-group col-md-4">
+                            <label for="newPressure">Pressão Arterial</label>
+                            <input type="number" class="form-control" id="newPressure" placeholder="Ex: 120">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Frequência Cardíaca -->
+                        <div class="form-group col-md-4">
+                            <label for="newHeartRate">Frequência Cardíaca (bpm)</label>
+                            <input type="number" class="form-control" id="newHeartRate" placeholder="Ex: 70">
+                        </div>
+                        <!-- Passos Diários -->
+                        <div class="form-group col-md-4">
+                            <label for="newDailySteps">Passos Diários</label>
+                            <input type="number" class="form-control" id="newDailySteps" placeholder="Ex: 5000">
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="newItem()" class="btn btn-primary">Diagnosticar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tabela de resultados -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Resultados</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover" id="myTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Gênero</th>
+                            <th>Idade</th>
+                            <th>Duração do Sono (h)</th>
+                            <th>Qualidade do Sono</th>
+                            <th>Atividade Física (min/dia)</th>
+                            <th>Nível de Estresse</th>
+                            <th>IMC</th>
+                            <th>Pressão Arterial</th>
+                            <th>Frequência Cardíaca</th>
+                            <th>Passos Diários</th>
+                            <th>Distúrbio do Sono</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- As linhas serão adicionadas dinamicamente aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4" role="alert">
+            <strong>Informação:</strong> Distúrbio do Sono indica a presença ou ausência de um distúrbio no paciente (Nenhum [0], Insônia, Apneia do Sono [1]).
+        </div>
+    </div>
+
+    <!-- Inclusão dos scripts do Bootstrap e dependências -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
