@@ -43,8 +43,9 @@ def test_modelo_knn():
     knn_path = os.path.join(base_dir, "ml_model", "sleep_health_knn.joblib")
     scaler_path = os.path.join(base_dir, "ml_model", "scaler_knn.joblib")
     
-    modelo_knn = modelo.carrega_modelo(knn_path)
-    scaler = modelo.carrega_modelo(scaler_path)
+    modelo.carrega_modelo(knn_path, scaler_path)
+    modelo_knn = modelo.model
+    scaler = modelo.scaler
 
     # Padronizando os dados de entrada usando o scaler treinado
     X_rescaled = scaler.transform(X)
@@ -53,11 +54,11 @@ def test_modelo_knn():
     acuracia_knn, recall_knn, precisao_knn, f1_knn = avaliador.avaliar(modelo_knn, X_rescaled, Y)
 
     # Testando as métricas do KNN
-    # Modifique os valores de acordo com seus requisitos
     assert acuracia_knn >= 0.75
     assert recall_knn >= 0.5
     assert precisao_knn >= 0.5
     assert f1_knn >= 0.5
+
 
 if __name__ == '__main__':
     import unittest
